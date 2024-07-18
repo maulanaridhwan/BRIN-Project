@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -12,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 # Fungsi untuk memuat data dan memprosesnya
 def load_data():
-    df = pd.read_excel('DATA SISTEM CAPASITOR BANK.xlsx')
+    df = pd.read_excel('DATA SISTEM CAPASITOR BANK (1).xlsx')
     df_cleaned = df.dropna()
 
     # Mengonversi semua nilai dalam kolom TEMPERATURE menjadi string terlebih dahulu
@@ -22,9 +21,9 @@ def load_data():
     df_cleaned.loc[:, 'TEMPERATURE'] = pd.to_numeric(df_cleaned['TEMPERATURE'].str.extract('(\d+)')[0], errors='coerce')
 
     # Memisahkan fitur dan label
-    columns_to_exclude = [f'MODUL {i}' for i in range(1, 13)] + ['TANGGAL PELAKSANAAN']
+    columns_to_exclude = [f'MODUL_{i}' for i in range(1, 13)] + ['TANGGAL_PELAKSANAAN']
     X = df_cleaned.drop(columns=columns_to_exclude)
-    labels = [f'MODUL {i}' for i in range(1, 13)]
+    labels = [f'MODUL_{i}' for i in range(1, 13)]
     y = df_cleaned[labels]
 
     # Menangani nilai NaN pada fitur dengan menggunakan SimpleImputer
