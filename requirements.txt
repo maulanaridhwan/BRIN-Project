@@ -5,3 +5,4 @@ pip==23.3
 streamlit
 seaborn==0.12.2
 matplotlib==3.7.1
+imbalanced-learn==0.10.1
