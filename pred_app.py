@@ -232,7 +232,7 @@
       "metadata": {
         "id": "rWLTtp3MvRXQ"
       },
-      "execution_count": null,
+      "execution_count": None,
       "outputs": []
     }
   ]
