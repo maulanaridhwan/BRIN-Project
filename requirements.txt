@@ -6,3 +6,4 @@ streamlit
 seaborn==0.12.2
 matplotlib==3.7.1
 imbalanced-learn==0.10.1
+openpyxl==3.1.5
