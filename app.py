@@ -93,9 +93,9 @@ if st.button('Prediksi'):
     st.subheader("Prediction Results:")
 
     for label, prediction in predictions.items():
-    # Mengubah display nama modul hasil prediksi
-    module_number = label.split("_")[1]
-    display_name = f"Module {module_number}"
-
-    status = "Active" if prediction == 1 else "Inactive"
-    st.write(f"{display_name}: {status}")
+        # Mengubah display nama modul hasil prediksi
+        module_number = label.split("_")[1]
+        display_name = f"Module {module_number}"
+    
+        status = "Active" if prediction == 1 else "Inactive"
+        st.write(f"{display_name}: {status}")
