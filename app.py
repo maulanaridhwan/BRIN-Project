@@ -49,6 +49,29 @@ for label in y.columns:
 # Judul aplikasi
 st.title("Capacitor Module Status Prediction")
 
+st.markdown("""
+<style>
+.module-card {
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.active {
+    background-color: #1f7a1f;
+    color: white;
+}
+
+.inactive {
+    background-color: #7a1f1f;
+    color: white;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Membagi inputan menjadi dua kolom
 col1, col2 = st.columns(2)
 
@@ -87,15 +110,26 @@ if st.button('Prediksi'):
     for label, model in models.items():
         prediction = model.predict(new_data_df)
         predictions[label] = prediction[0]
-
-
+        
     # Menampilkan hasil prediksi
-    st.subheader("Prediction Results:")
-
+    st.subheader("Module Status Dashboard")
+    modules = []
     for label, prediction in predictions.items():
-        # Mengubah display nama modul hasil prediksi
         module_number = label.split("_")[1]
         display_name = f"Module {module_number}"
     
         status = "Active" if prediction == 1 else "Inactive"
-        st.write(f"{display_name}: {status}")
+        css_class = "active" if prediction == 1 else "inactive"
+    
+        modules.append((display_name, status, css_class))
+    
+    # tampilkan dalam grid 3 kolom
+    cols = st.columns(3)
+    
+    for i, module in enumerate(modules):
+        name, status, css = module
+        with cols[i % 3]:
+            st.markdown(
+                f'<div class="module-card {css}">{name}<br>{status}</div>',
+                unsafe_allow_html=True
+            )
