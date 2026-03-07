@@ -47,13 +47,13 @@ for label in y.columns:
     models[label] = rf
 
 # Judul aplikasi
-st.title("Prediksi Status Modul Kapasitor")
+st.title("Capacitor Module Status Prediction")
 
 # Membagi inputan menjadi dua kolom
 col1, col2 = st.columns(2)
 
 with col1:
-    faktor_daya = st.number_input('FAKTOR DAYA', step=0.01, format="%.2f")
+    faktor_daya = st.number_input('POWER FACTOR', step=0.01, format="%.2f")
     line_voltage_ln = st.number_input('LINE VOLTAGE LN', step=1)
     apparent_current = st.number_input('APPARENT CURRENT', step=1)
     reactive_power = st.number_input('REACTIVE POWER', step=1)
@@ -90,7 +90,12 @@ if st.button('Prediksi'):
 
 
     # Menampilkan hasil prediksi
-    st.subheader("Hasil Prediksi:")
+    st.subheader("Prediction Results:")
+
     for label, prediction in predictions.items():
-        status = "Active" if prediction == 1 else "Inactive"
-        st.write(f"{label}: {status}")
+    # Mengubah display nama modul hasil prediksi
+    module_number = label.split("_")[1]
+    display_name = f"Module {module_number}"
+
+    status = "Active" if prediction == 1 else "Inactive"
+    st.write(f"{display_name}: {status}")
