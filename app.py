@@ -93,7 +93,7 @@ with col2:
     harmonics_thd_i = st.number_input('HARMONICS THD I', step=0.1, format="%.1f")
 
 # Tombol prediksi
-if st.button('Prediksi'):
+if st.button('Predict'):
     # Menyusun data baru untuk prediksi
     new_data = np.array([[faktor_daya, line_voltage_ln, apparent_current, reactive_power, active_power, 
                         apparent_power, diff_to_pf, frequency, temperature, harmonics_v, harmonics_i, 
