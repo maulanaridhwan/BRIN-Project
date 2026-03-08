@@ -128,12 +128,12 @@ if st.button('Predict'):
     
         modules.append((display_name, status, css_class))
     
-    # tampilkan dalam grid 2 kolom
-    cols = st.columns(2)
+    # tampilkan dalam grid 4 kolom
+    cols = st.columns(4)
     
     for i, module in enumerate(modules):
         name, status, css = module
-        with cols[i % 3]:
+        with cols[i % 4]:
             st.markdown(
                 f'<div class="module-card {css}">{name}<br>{status}</div>',
                 unsafe_allow_html=True
