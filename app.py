@@ -52,12 +52,17 @@ st.title("Capacitor Module Status Prediction")
 st.markdown("""
 <style>
 .module-card {
-    padding: 15px;
-    border-radius: 10px;
+    padding: 6px;
+    border-radius: 8px;
     text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    margin: 5px;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 4px;
+    height: 55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
 }
 
 .active {
@@ -112,7 +117,7 @@ if st.button('Predict'):
         predictions[label] = prediction[0]
         
     # Menampilkan hasil prediksi
-    st.subheader("Module Status Dashboard")
+    st.subheader("Module Status Prediction Results")
     modules = []
     for label, prediction in predictions.items():
         module_number = label.split("_")[1]
@@ -123,8 +128,8 @@ if st.button('Predict'):
     
         modules.append((display_name, status, css_class))
     
-    # tampilkan dalam grid 3 kolom
-    cols = st.columns(3)
+    # tampilkan dalam grid 2 kolom
+    cols = st.columns(2)
     
     for i, module in enumerate(modules):
         name, status, css = module
